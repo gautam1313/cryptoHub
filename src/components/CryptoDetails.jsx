@@ -14,7 +14,11 @@ import {
   NumberOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons";
-import { useGetCryptoDetailsQuery } from "../services/cryptoApi";
+import LineChart from "./LineChart";
+import {
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+} from "../services/cryptoApi";
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -23,6 +27,10 @@ const CryptoDetails = () => {
   const { coinId } = useParams();
   const [timePeriod, setTimePeriod] = useState("7d");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({
+    coinId,
+    timePeriod,
+  });
   const cryptoDetails = data?.data?.coin;
 
   if (isFetching) return "Loading...";
@@ -106,25 +114,67 @@ const CryptoDetails = () => {
           <Option key={date}>{date}</Option>
         ))}
       </Select>
+      <LineChart
+        coinHistory={coinHistory}
+        currentPrice={millify(cryptoDetails.price)}
+        coinName={cryptoDetails.name}
+      />
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">
               {cryptoDetails.name} Value Stats
             </Title>
-            <p>
-              An overview showing the statistics of {cryptoDetails.name}, such
-              as the base and quote currency, the rank, and trading volume.
-            </p>
+            <p>An overview showing the statistics of {cryptoDetails.name}.</p>
           </Col>
           {stats.map(({ title, icon, value }) => (
-            <Col className="coin-stats">
+            <Col className="coin-stats" key={Math.random()}>
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
               </Col>
               <Text className="stats">{value}</Text>
             </Col>
+          ))}
+        </Col>
+        <Col className="other-stats-info">
+          <Col className="coin-value-statistics-heading">
+            <Title level={3} className="coin-details-heading">
+              Other Stats
+            </Title>
+            <p>An overview showing the statistics of all crypto coins.</p>
+          </Col>
+          {genericStats.map(({ title, icon, value }) => (
+            <Col className="coin-stats" key={Math.random()}>
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+              </Col>
+              <Text className="stats">{value}</Text>
+            </Col>
+          ))}
+        </Col>
+      </Col>
+      <Col className="coin-desc-link">
+        <Row className="coin-desc">
+          <Title className="coin-details-heading" level={3}>
+            What is {cryptoDetails.name}
+            {HTMLReactParser(cryptoDetails.description)}
+          </Title>
+        </Row>
+        <Col className="coin-links">
+          <Title className="coin-details-heading" level={3}>
+            {cryptoDetails.name} Links
+          </Title>
+          {cryptoDetails?.links?.map((link) => (
+            <Row className="coin-link" key={Math.random()}>
+              <Title level={5} className="link-name">
+                {link.type}
+              </Title>
+              <a href={link.url} target="_blank" rel="noreferrer">
+                {link.name}
+              </a>
+            </Row>
           ))}
         </Col>
       </Col>
