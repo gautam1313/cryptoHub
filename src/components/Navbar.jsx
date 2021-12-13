@@ -20,16 +20,16 @@ const Navbar = () => {
         </Typography.Title>
       </div>
       <Menu theme="dark">
-        <Menu.Item icon={<HomeOutlined />}>
+        <Menu.Item icon={<HomeOutlined />} key="a">
           <Link to="/">Home</Link>
         </Menu.Item>
-        <Menu.Item icon={<FundOutlined />}>
+        <Menu.Item icon={<FundOutlined />} key="b">
           <Link to="/cryptocurrencies">Cryptocurrencies</Link>
         </Menu.Item>
-        <Menu.Item icon={<MoneyCollectOutlined />}>
+        <Menu.Item icon={<MoneyCollectOutlined />} key="c">
           <Link to="/exchanges">Exchanges</Link>
         </Menu.Item>
-        <Menu.Item icon={<BulbOutlined />}>
+        <Menu.Item icon={<BulbOutlined />} key="d">
           <Link to="/news">News</Link>
         </Menu.Item>
       </Menu>
