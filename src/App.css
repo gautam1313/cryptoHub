@@ -260,6 +260,23 @@
   font-weight: 900 !important;
 }
 
+.menu-control-container {
+  display: none !important;
+  position: absolute !important;
+  right: 10px !important;
+  top: 25px !important;
+  font-size: 1rem !important;
+  background-color: var(--bgSecondary) !important;
+  border: none !important;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 81vh;
+}
+
 @media screen and (max-width: 1300px) {
   .main {
     margin-left: 50;
@@ -301,6 +318,10 @@
     width: 100%;
     z-index: 100;
     background-color: var(--bgSecondary);
+  }
+
+  .menu-control-container {
+    display: block !important;
   }
 
   .ant-menu {
