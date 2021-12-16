@@ -92,8 +92,6 @@ const CryptoDetails = () => {
     },
   ];
 
-  console.log(cryptoDetails);
-
   return (
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">

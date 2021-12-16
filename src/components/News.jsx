@@ -19,7 +19,6 @@ const News = ({ simplified }) => {
     newsCategory,
     count,
   });
-  console.log("News ", cryptoNews);
 
   if (isFetching) return <Loader />;
 

@@ -12,7 +12,6 @@ const { Panel } = Collapse;
 const Exchanges = () => {
   const { data, isFetching } = useGetExchangesQuery();
   const exchangeInfo = data?.data?.exchanges;
-  console.log(exchangeInfo);
 
   if (isFetching) return <Loader />;
 
