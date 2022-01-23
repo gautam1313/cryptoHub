@@ -4,7 +4,6 @@ import { Layout, Typography, Space } from "antd";
 import {
   Navbar,
   Homepage,
-  Exchanges,
   Cryptocurrencies,
   CryptoDetails,
   News,

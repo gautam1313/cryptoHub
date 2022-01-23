@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Button, Menu, Typography, Avatar } from "antd";
 import {
   HomeOutlined,
-  MoneyCollectOutlined,
   FundOutlined,
   BulbOutlined,
   MenuOutlined,

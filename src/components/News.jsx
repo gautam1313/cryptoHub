@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { Typography, Card, Row, Col, Avatar, Select } from "antd";
+import { Typography, Card, Row, Col, Select } from "antd";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import Loader from "./Loader";
