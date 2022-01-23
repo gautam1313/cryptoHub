@@ -19,7 +19,6 @@ const News = ({ simplified }) => {
     newsCategory,
     count,
   });
-
   if (isFetching) return <Loader />;
 
   return (

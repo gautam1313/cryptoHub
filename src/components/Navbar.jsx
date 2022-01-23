@@ -52,9 +52,9 @@ const Navbar = () => {
           <Menu.Item icon={<FundOutlined />} key="b">
             <Link to="/cryptocurrencies">Cryptocurrencies</Link>
           </Menu.Item>
-          <Menu.Item icon={<MoneyCollectOutlined />} key="c">
+          {/* <Menu.Item icon={<MoneyCollectOutlined />} key="c">
             <Link to="/exchanges">Exchanges</Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item icon={<BulbOutlined />} key="d">
             <Link to="/news">News</Link>
           </Menu.Item>

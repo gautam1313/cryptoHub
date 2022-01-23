@@ -28,7 +28,7 @@ export const cryptoApi = createApi({
     getCryptoHistory: builder.query({
       query: ({ coinId, timePeriod }) =>
         createRequest(
-          `/coin/${coinId}/history/${timePeriod}?referenceCurrencyUuid=${process.env.REACT_APP_CRYPTOUUID}`
+          `/coin/${coinId}/history?timePeriod=${timePeriod}&referenceCurrencyUuid=${process.env.REACT_APP_CRYPTOUUID}`
         ),
     }),
     getExchanges: builder.query({
