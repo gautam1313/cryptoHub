@@ -14,17 +14,28 @@ export const cryptoApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getCryptos: builder.query({
-      query: (count) => createRequest(`/coins?limit=${count}`),
+      query: (count) =>
+        createRequest(
+          `/coins?referenceCurrencyUuid=${process.env.REACT_APP_CRYPTOUUID}&limit=${count}`
+        ),
     }),
     getCryptoDetails: builder.query({
-      query: (coinId) => createRequest(`/coin/${coinId}`),
+      query: (coinId) =>
+        createRequest(
+          `/coin/${coinId}?referenceCurrencyUuid=${process.env.REACT_APP_CRYPTOUUID}`
+        ),
     }),
     getCryptoHistory: builder.query({
       query: ({ coinId, timePeriod }) =>
-        createRequest(`/coin/${coinId}/history/${timePeriod}`),
+        createRequest(
+          `/coin/${coinId}/history/${timePeriod}?referenceCurrencyUuid=${process.env.REACT_APP_CRYPTOUUID}`
+        ),
     }),
     getExchanges: builder.query({
-      query: () => createRequest(`/exchanges`),
+      query: () =>
+        createRequest(
+          `/exchanges?referenceCurrencyUuid=${process.env.REACT_APP_CRYPTOUUID}`
+        ),
     }),
   }),
 });
